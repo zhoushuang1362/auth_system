@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h3 Shelter: #{shelter_own_supply.shelter.shelter_name}
+    h3 Supply: #{shelter_own_supply.supply.supply_name}
+    h3 Own Number: #{shelter_own_supply.own_number}
+    h3 Update Date: #{shelter_own_supply.date_of_update}
+
+    hr
+    p
+        a(href=shelter_own_supply.url+'/delete') Delete shelter_own_supply
+    p
+        a(href=shelter_own_supply.url+'/update') Update shelter_own_supply

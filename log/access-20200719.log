@@ -1,0 +1,22 @@
+date>Sun Jul 19 2020 02:01:15 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 02:01:15 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 02:01:20 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>POST  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 02:01:20 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 02:01:20 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog
+date>Sun Jul 19 2020 22:57:55 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>GET  - referrer>-
+date>Sun Jul 19 2020 22:57:55 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  - referrer>-
+date>Sun Jul 19 2020 22:58:01 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>POST  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 22:58:01 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 22:58:02 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog
+date>Sun Jul 19 2020 23:09:27 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:09:27 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:09:32 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>POST  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:09:32 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:09:36 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog
+date>Sun Jul 19 2020 23:09:36 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog/user/show_qrcode
+date>Sun Jul 19 2020 23:10:16 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:10:16 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  - referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:10:21 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>302 method>POST  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:10:21 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/login
+date>Sun Jul 19 2020 23:10:24 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog
+date>Sun Jul 19 2020 23:10:24 GMT+0900 (GMT+09:00) remote-addr>127.0.0.1 status>200 method>GET  user_id>5f055b92d6e535018cf20e61 role>user user_name>user1 user1 referrer>http://localhost:3000/catalog/user/show_qrcode

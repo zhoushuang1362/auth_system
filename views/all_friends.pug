@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    h1= title
+    ul
+    div(class="table-responsive")
+        table(class="table table-striped table-hover")
+
+            caption I will be there
+                thead
+                    th タイプ
+                    th 友達
+                    th 電話番号
+                    th 状況
+                    th note
+                    th 避難所
+
+           
+                tbody
+                    each friends in all_friends
+                        tr
+                            td #{friends.rela_type}
+                            if(friends.user._id== session.user._id)
+                                td #{friends.friend.name}
+                                td #{friends.friend.telephone}
+                                td #{friends.friend.status.status_name}
+                                td #{friends.friend.note}
+                            else
+                                td #{friends.user.name}
+                                td #{friends.user.telephone}
+                                td #{friends.user.status.status_name}
+                                td #{friends.user.note}                           
+                            if(friends.rela_type=='family')
+                                td #{friends.friend.shelter.shelter_name}
+                    else
+                        li There are no friends.

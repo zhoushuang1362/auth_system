@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+  h1 Delete Shelter: #{shelter.shelter_name}
+  
+    p Do you really want to delete this Shelter?
+    
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=shelter._id )
+
+      button.btn.btn-primary(type='submit') Delete

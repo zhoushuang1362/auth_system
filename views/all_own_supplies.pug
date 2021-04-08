@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1= title
+  
+    ul
+        table(class="table table-striped table-hover")
+
+            caption shelter own supplies
+
+            thead
+                
+                th 避難所
+                th 避難物資
+                th 数量
+                th 時間
+            tbody
+
+                each shelter_own_supply in all_shelter_own_supply
+                    tr
+                        td 
+                            a(href=shelter_own_supply.url) #{shelter_own_supply.shelter.shelter_name}
+                        td #{shelter_own_supply.supply.supply_name}
+                        td #{shelter_own_supply.own_number}
+                        td #{shelter_own_supply.date_of_update}
+                else
+                    li There need no supply.

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+    each status in all_status
+      li 
+        a(href=status.url) #{status.status_name} 
+    else
+      li There are no status.

@@ -1,0 +1,28 @@
+extends layout
+block content
+    h1=title
+    form(class = 'form-horizontal' method='POST' action='')
+        div.form-group
+            label(for="require_name" class="col-sm-2")   申請する人
+                h3  #{user_login.family_name}   #{user_login.given_name}
+        div.form-group
+            label(for="required_name" class="col-sm-2")  追加される人
+                h3  #{found_user.name}
+        div.form-group
+            label(for="sex" class="col-sm-2")    性別
+                h3  #{found_user.sex}
+        div.form-group
+            label(for="rela_type"   class="col-sm-2")  タイプ
+                select.form-control(type='select' name='rela_type' required='true')
+                    option(value='friend' selected=(relationship && relationship.rela_ship=='friend' ? 'selected' : false) ) friend
+                    option(value='family' selected=(relationship && relationship.rela_ship=='family' ? 'selected' : false) ) family   
+        div.form-group
+            label(for="message" class="col-sm-4")  メッセージ
+                textarea.form-control(name="message", cols="10", rows="4" style="white-space: pre-line;")          
+            
+        button.btn.btn-primary(type='submit') 確定
+        if errors 
+          ul
+          for error in errors
+            li!= error.msg 
+        

@@ -1,0 +1,39 @@
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    link(rel="shortcut icon" href="/images/avatars/upload.ico" type="image/x-icon")
+    link(rel="stylesheet" href="/css/jquery.Jcrop.css")
+    link(rel="stylesheet" href="/css/main.css")
+body
+    div(class="container")
+        div(class="jc-demo-box")
+            img(src=session.user.avatar_url id="target" alt="avatar")
+            div(id="preview-pane")
+                div(class="preview-container")
+                    img(src=session.user.avatar_url class="jcrop-preview" alt="Preview")
+        button(id="cutImage" class="upload-btn") cut
+    script(src="/js/jquery.min.js")
+    script(src="/js/jquery.Jcrop.js")
+    script(src="/js/main.js")
+    script.
+        let imgname = "#{imgName}";
+        $("#cutImage").on("click", function () {
+            let 
+                w = parseInt($(".jcrop-holder>div:first").css("width")),
+                h = parseInt($(".jcrop-holder>div:first").css("height")),
+                x = parseInt($(".jcrop-holder>div:first").css("left")),
+                y = parseInt($(".jcrop-holder>div:first").css("top"));
+            $.post("/catalog/user/handle_cut",{
+                imgname,
+                w,
+                h,
+                x,
+                y
+            }, function (data) {
+                if (data.ok) {
+                    window.location = "/catalog";
+                }
+            });
+        });

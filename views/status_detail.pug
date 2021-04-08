@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+  h1 Status: #{status.status_name}
+  
+  hr
+  p
+    a(href=status.url+'/delete') Delete Status
+  p
+    a(href=status.url+'/update') Update Status

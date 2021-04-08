@@ -1,0 +1,31 @@
+extends layout
+block content
+    h1=title
+    form(class = 'form-horizontal' method='POST' action='')                 
+        div.form-group
+            label.col-sm-1.control-label Shelter:
+            div.col-sm-2
+                select.col-sm-6.form-control(type='select' placeholder='Select shelter' name='shelter' required='true' )
+                    for shelter in shelters
+                        if shelter_own_supply
+                            option(value=shelter._id selected=(shelter._id.toString()==shelter_own_supply.shelter._id.toString() ? 'selected' : false) ) #{shelter.shelter_name}
+                        else
+                            option(value=shelter._id) #{shelter.shelter_name}
+            label.col-sm-1.control-label Supply:
+            div.col-sm-2
+                select.col-sm-6.form-control(type='select' placeholder='Select supply' name='supply' required='true' )
+                    for supply in supplies
+                        if shelter_own_supply
+                            option(value=supply._id selected=(supply._id.toString()==shelter_own_supply.supply._id.toString() ? 'selected' : false) ) #{supply.supply_name}
+                        else
+                            option(value=supply._id) #{supply.supply_name}
+            label.col-sm-1.control-label Number:
+            div.col-sm-2
+                input.form-control(type='text' name='own_number' required='true' value=(undefined===shelter_own_supply ? '' : shelter_own_supply.own_number))
+            div.col-sm-4
+        
+        button.btn.btn-primary(type='submit') Submit
+        if errors 
+          ul
+          for error in errors
+            li!= error.msg

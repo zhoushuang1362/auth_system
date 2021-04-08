@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+  h1 Supply: #{supply.supply_name}
+  
+  hr
+  p
+    a(href=supply.url+'/delete') Delete Supply
+  p
+    a(href=supply.url+'/update') Update Supply

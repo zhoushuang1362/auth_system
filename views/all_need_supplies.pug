@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1= title
+  
+    ul
+        table(class="table table-striped table-hover")
+
+            caption shelter need supplis
+
+            thead
+                
+                th 避難所
+                th 避難物資
+                th 数量
+                th 時間
+            tbody
+
+                each shelter_need_supply in all_shelter_need_supply
+                    tr
+                        td 
+                            a(href=shelter_need_supply.url) #{shelter_need_supply.shelter.shelter_name}
+                        td #{shelter_need_supply.supply.supply_name}
+                        td #{shelter_need_supply.need_number}
+                        td #{shelter_need_supply.date_of_request}
+                else
+                    li There need no supply.

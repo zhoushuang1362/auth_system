@@ -1,0 +1,92 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/css/jquery.Jcrop.css')
+    link(rel='stylesheet' href='/css/main.css')
+    script(src='/javascripts/jquery-3.4.1.min.js')
+    script(src='/js/jquery.min.js')
+    script(src='/js/jquery.Jcrop.js')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/js/main.js')
+    script(src='/javascripts/bootstrap.min.js')    
+  body
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-3')
+          form(action="/catalog/user/avatar_upload" method="post" enctype="multipart/form-data")
+            div(class="avatar")
+              img(class="img-circle"  src=session.user.avatar_url alt="Photo" width="25%" height="25%")
+              input(type="file" id="file_input" accept="image/*" name="ful_avatar")
+            div(class="upload-input")
+              input(type="submit" class="upload-btn btn-sm" id="upload_btn" )
+              script.
+                $("#file_input").on("change", function () {
+                  let filePath = $(this).val();
+                  if (filePath !== "") {
+                    $("#upload_btn").show();
+                  }
+                });
+          div(class='row')
+            div(class='col-sm-12')
+              dl(class="list-inline")
+                dt name: 
+                dd #{session.user.family_name} #{session.user.given_name} 
+                dt role: 
+                dd #{session.user.role.role_name}
+          sidebar
+            ul(class='sidebar-nav' style='font-size: 14px' )
+              li 
+                a(href='/catalog') Home
+              li 
+                a(href='/catalog/supply') All Supplies
+              li 
+                a(href='/catalog/status') All Status
+              li 
+                a(href='/catalog/shelter') All Shelters
+              li
+                  a(href='/catalog/user')  All Users
+              li 
+                a(href='/catalog/role') All Roles
+              li 
+                a(href='/catalog/relationship') All Relationship
+              li 
+                a(href='/catalog/shelter_need_supply') All Shelter_need_supply
+              li 
+                a(href='/catalog/shelter_own_supply') All Shelter_own_supply
+              li 
+                a(href='/catalog/user_shelter') All User_shelter
+              hr
+              li 
+                a(href='/catalog/supply/create') create supply
+              li 
+                a(href='/catalog/status/create') create status
+              li 
+                a(href='/catalog/shelter/create')  create shelter
+              li 
+                a(href='/catalog/user/create') create user 
+              li 
+                a(href='/catalog/shelter_own_supply/create') create shelter_own_supply  
+              li 
+                a(href='/catalog/shelter_need_supply/create') create shelter_need_supply
+              li 
+                a(href='/catalog/relationship/research') create relationship
+              hr
+              if(session.user.role.role_name=='user')
+                li 
+                  a(href='/catalog/relationship/all_friends') all friends
+              li 
+                  a(href='/catalog/user/'+session.user._id+'/update') 個人情報の確認、変更
+              li  
+                a(href='/catalog/user/show_qrcode') My QRcode
+              li
+                a(href='/catalog/user/identification')  upload identification  
+              li
+                a(href='/catalog/user/facial_recognition') camera            
+              li 
+                a(href='/logout')  logout  
+        div(class='col-sm-9')
+          block content

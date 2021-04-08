@@ -1,0 +1,85 @@
+block content
+    h1=title
+    //使用POST方法将数据发送到服务器，并且因为操作action是空字符串，所以将数据发送到与页面相同的URL
+    form(class = 'form-horizontal' method='POST' action='')
+        div.form-group
+          label.col-sm-2.control-label Family Name:
+          div.col-sm-3
+            //字段的默认值，取决于是否定义了user。
+            //如果从GET路由调用，它将为空，因为这是一个新表单。如果从POST路由调用，它将包含用户最初输入的（无效）值。
+            input.form-control(type='text' name='family_name' required='true' value=(undefined===user ? '' : user.given_name) )
+          label.col-sm-2.control-label Given Name:
+          div.col-sm-3
+            input.form-control(type='test' name='given_name' required='true' value=(undefined===user ? '' : user.family_name))
+          div.col-sm-4
+        
+        div.form-group  
+          label.col-sm-2.control-label Sex:
+          div.col-sm-3
+            select.form-control(type='select' name='sex' required='true' )
+                option(value='male' selected=(user && user.sex=='male' ? 'selected' : false) ) male
+                option(value='female' selected=(user && user.sex=='female' ? 'selected' : false) ) female         
+          label.col-sm-2.control-label Birth:
+          div.col-sm-3
+            input.form-control(type='date' name='birth' value=(undefined===user ? '' : user.birth_YY_MM_DD) )
+          div.col-sm-4
+        
+        div.form-group
+          label.col-sm-2.control-label Age:
+          div.col-sm-3
+            input.form-control(type='text' name='age' required='true' value=(undefined===user ? '' : user.age))
+          label.col-sm-2.control-label Telephone:
+          div.col-sm-3
+            input.form-control(type='text' name='telephone' required='true' value=(undefined===user ? '' : user.telephone))
+          div.col-sm-4
+        
+        div.form-group
+          label.col-sm-2.control-label Address:
+          div.col-sm-3
+            input.form-control(type='text' name='address' required='true' value=(undefined===user ? '' : user.address))
+          label.col-sm-2.control-label Password:
+          div.col-sm-3
+            input.form-control(type='text' name='password' required='true' value=(undefined===user ? '' : user.password))
+          div.col-sm-4
+        
+        div.form-group
+          label.col-sm-2.control-label Note:
+          div.col-sm-8
+            input.form-control(type='text' name='note' value=(undefined===user ? '' : user.note))
+          div.col-sm-4
+        
+        div.form-group
+          label.col-sm-2.control-label Shelter:
+          div.col-sm-3
+            select.col-sm-6.form-control(type='select' placeholder='Select shelter' name='shelter' required='true' )
+              for shelter in shelters
+                if user
+                  option(value=shelter._id selected=(shelter._id.toString()==user.shelter._id.toString() ? 'selected' : false) ) #{shelter.shelter_name}
+                else
+                  option(value=shelter._id) #{shelter.shelter_name}
+          label.col-sm-2.control-label Status:
+          div.col-sm-3
+            select.col-sm-6.form-control(type='select' placeholder='Select status' name='status' required='true' )
+              for status1 in status
+                if user
+                  option(value=status1._id selected=(status1._id.toString()==user.status._id.toString() ? 'selected' : false) ) #{status1.status_name}
+                else
+                  option(value=status1._id) #{status1.status_name}
+          div.col-sm-4
+        
+        div.form-group
+          label.col-sm-2.control-label Role:
+          div.col-sm-3
+            select.col-sm-6.form-control(type='select' placeholder='Select role' name='role' required='true' )
+              for role in roles
+                if user
+                  option(value=role._id selected=(role._id.toString()==user.role._id.toString() ? 'selected' : false) ) #{role.role_name}
+                else
+                  option(value=role._id) #{role.role_name} 
+        div.col-sm-4 
+        
+        button.btn.btn-primary(type='submit') 新規登録
+        if errors 
+          ul
+          for error in errors
+            li!= error.msg

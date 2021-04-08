@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Shelter Name:
+      input#name.form-control(type='text', placeholder='Shelter name' name='name' 
+                               value=(undefined===shelter ? '' : shelter.shelter_name))
+      label(for='name') Shelter Address:
+      input#name.form-control(type='text', placeholder='Shelter address' name='address' 
+                               value=(undefined===shelter ? '' : shelter.address))
+      label(for='name') Shelter Capacity:
+      input#name.form-control(type='text', placeholder='Shelter capacity' name='capacity' 
+                               value=(undefined===shelter ? '' : shelter.capacity))
+      label(for='name') Shelter People Number(now) :
+      input#name.form-control(type='text', placeholder='people number' name='people_number' 
+                               value=(undefined===shelter ? '' : shelter.people_number))
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
+        

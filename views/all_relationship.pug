@@ -1,0 +1,68 @@
+extends layout
+
+block content
+    h1= title
+  
+    ul
+    div(class="table-responsive")
+        table(class="table table-striped table-hover")
+
+            caption I will be there
+
+            thead
+                th 友達
+                th 追加時間
+                //- th 確認時間
+                th タイプ
+                th メッセージ
+                th 認証状態
+                th 確認状態
+                th 追加
+                th 拒否
+                th 本人確認
+
+           
+            tbody
+                each relationship in all_relationship
+                    tr
+                        if session.user._id==relationship.user._id
+                            td #{relationship.friend.name}
+                        if session.user._id==relationship.friend._id
+                            td #{relationship.user.name}
+                        td #{relationship.date_of_request_formatted}
+                        //- td #{relationship.date_of_confirm_formatted}
+                        td #{relationship.rela_type}
+                        td 
+                            a(href=relationship.url_message style="white-space: pre-line;")  確認
+                        if session.user._id==relationship.user._id
+                            td #{relationship.friend.is_authenticated}
+                        if session.user._id==relationship.friend._id
+                            td #{relationship.user.is_authenticated}
+                        if  relationship.is_accepted== true
+                            td 追加済み
+                        else if relationship.is_accepted == false
+                            td 拒否済み
+                        else
+                            td 未確認
+                        if relationship.friend._id == user_login._id
+                            td
+                                if relationship.is_accepted == null
+                                    a(href=relationship.url_accept) 追加
+                            td
+                                if relationship.is_accepted == null
+                                    a(href=relationship.url_refuse) 拒否 
+                        else
+                            td
+                            td
+                        
+                        if  session.user._id==relationship.user._id
+                            td
+                                if  session.user.is_authenticated=='real_name_auth'  
+                                    a(href='/catalog/friends_auth/create?friend_id='+relationship.friend._id style="white-space: pre-line;") 本人確認
+                        if session.user._id==relationship.friend._id
+                            td
+                                if  session.user.is_authenticated=='real_name_auth'
+                                    a(href='/catalog/friends_auth/create?friend_id='+relationship.user._id style="white-space: pre-line;") 本人確認
+                            
+                else
+                    li There are no relationship.

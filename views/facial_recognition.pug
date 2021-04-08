@@ -1,0 +1,69 @@
+doctype html
+html(lang="zh")
+head
+    meta(charset="UTF-8") 
+    meta(name="viewport" content="width=device-width, initial-scale=1.0") 
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    h1=title
+    script(src="/js/zepto.min.js")
+    style(type="/css/style.css")
+    link(rel="stylesheet" href="/css/jquery.Jcrop.css")
+    link(rel="stylesheet" href="/css/main.css")
+body
+    div(class="box")
+    video(src="")
+    button(class='shot') shot
+    canvas(id='canvas')
+    img(src='')
+    script(src="/js/jquery.min.js")
+    script(src="/js/jquery.Jcrop.js")
+    script(src="/js/main.js")
+    script.
+        if (navigator.mediaDevices === undefined) {
+            navigator.mediaDevices = {};
+        }
+        if (navigator.mediaDevices.getUserMedia === undefined) {
+            navigator.mediaDevices.getUserMedia = function(constraints) {
+                var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                if (!getUserMedia) {
+                    return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                }
+                return new Promise(function(resolve, reject) {
+                    getUserMedia.call(navigator, constraints, resolve, reject);
+                });
+            }
+        }
+        // 视频大小
+        var constraints = {video: true};
+        // 开启视频
+        navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream) {
+            console.log('getUserMedia:', mediaStream)
+            var video = document.querySelector('video');
+            if ("srcObject" in video) {
+                video.srcObject = mediaStream;
+            } else {
+                video.src = window.URL.createObjectURL(stream);
+            }
+            video.onloadedmetadata = function(e) {
+                video.play();
+            }; 
+            var canvas = document.getElementById('canvas')
+            $('button').on('click', function () {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0);
+                $('img').css('src', canvas.toDataURL("image/png"))
+                var img_data=canvas.toDataURL("image/png");
+                var image_data=img_data.substr(22);
+                $.post("/catalog/user/facial_recognition",{
+                    image_data
+                }, function (data) {
+                    if (data.ok) {
+                        window.location = "/catalog";
+                    }
+                });
+            })    
+        }).catch(function(err) {
+            console.log(err.name + ": " + err.message);
+        });   
+

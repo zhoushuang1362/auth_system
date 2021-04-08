@@ -1,0 +1,51 @@
+extends layout
+block content
+  h1= title
+  p Welcome to #{title}
+  div(id="map" style="width:600px;height:400px;" margin="0" padding="0")
+  script.
+    var map,infoWindow;
+    function initMap(){
+      map = new google.maps.Map(document.getElementById("map"),{
+      //- 地图中心经纬度
+        center:{
+          lat: 35.7100627,
+          lng: 139.8107004
+        },
+        //- 显示比例
+          zoom: 8
+      });
+      infoWindow = new google.maps.InfoWindow;
+      //- 获取当前经纬度并在得到用户同意后进行显示
+      if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+          //- 当前经纬度
+          var pos ={
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          infoWindow.open(map);
+          map.setCenter(pos);
+        }, function(){
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      }else{
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+      marker = new google.maps.Marker({
+        position: {lat: 35.7100627, lng: 139.8107004}, // マーカーの位置を指定
+        map: map // マーカーを配置する地図を指定
+      });
+    }
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT6F6Lyb9LjwE0yy26IPFb3vduR7ukMF0&callback=initMap&libraries=&v=weekly" async defer)
+

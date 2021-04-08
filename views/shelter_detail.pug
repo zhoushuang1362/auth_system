@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  h1 Shelter Name: #{shelter.shelter_name}
+  h1 Shelter Address: #{shelter.address}
+  h1 Shelter apacity: #{shelter.capacity} 
+  h1 Shelter people number of now :#{shelter.people_number}
+
+  
+  hr
+  p
+    a(href=shelter.url+'/delete') Delete Shelter
+  p
+    a(href=shelter.url+'/update') Update Shelter

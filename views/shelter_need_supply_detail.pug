@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h3 Shelter: #{shelter_need_supply.shelter.shelter_name}
+    h3 Supply: #{shelter_need_supply.supply.supply_name}
+    h3 Need Number: #{shelter_need_supply.need_number}
+    h3 Request Date: #{shelter_need_supply.date_of_request}
+
+    hr
+    p
+        a(href=shelter_need_supply.url+'/delete') Delete shelter_need_supply
+    p
+        a(href=shelter_need_supply.url+'/update') Update shelter_need_supply

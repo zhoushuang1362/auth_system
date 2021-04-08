@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    h1 #{title}
+
+    ul
+
+        table(class="table table-striped table-hover")
+
+            caption Don't worry
+
+            thead
+                
+                th 避難所名
+                th 住所
+                th 収容人数
+                th 現在収容人数
+                th 詳細
+                th 変更
+                th 削除
+
+           
+            tbody
+
+                each shelter in all_shelters
+                    tr
+                        td  #{shelter.shelter_name}
+                        td  #{shelter.address} 
+                        td  #{shelter.capacity}
+                        td  #{shelter.people_number} 
+                        td      
+                                a(href=shelter.url) 詳細
+                        td 
+                                a(href=shelter.url+'/update') 変更
+                        td 
+                                a(href=shelter.url+'/delete') 削除
+                
+                else
+                    li There are no shelter.

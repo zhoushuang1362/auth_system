@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+    h1 Delete : #{shelter_own_supply.shelter.shelter_name } #{shelter_own_supply.supply.supply_name} #{shelter_own_supply.own_number}
+        p Do you really want to delete this data?
+    
+        form(method='POST' action='')
+            div.form-group
+                input#id.form-control(type='hidden',name='id', required='true', value=shelter_own_supply._id )
+        
+            button.btn.btn-primary(type='submit') Delete

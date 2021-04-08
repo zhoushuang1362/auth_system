@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    h1 #{title}
+    ul
+    div(style="height='90px'")
+            table(class="table table-striped table-hover ")
+                thead             
+                    th お名前
+                    th パスワード
+                    th 性別
+                    th 生年月日
+                    th 年齢
+                    th 住所
+                    th 電話番号
+                    th ノート
+                    th 健康状態
+                    th 所在避難所
+                    th 役割
+                    th 本人確認           
+                tbody
+                    each user in all_users
+                        tr
+                            td 
+                                a(href=user.url)  #{user.name}
+                            td #{user.password} 
+                            td #{user.sex}
+                            td #{user.birth_formatted} 
+                            td #{user.age}
+                            td #{user.address} 
+                            td #{user.telephone}
+                            td #{user.note}
+                            td #{user.status.status_name}
+                            td #{user.shelter.shelter_name} 
+                            td #{user.role.role_name}
+                            if(user.is_authenticated=='real_name_auth')
+                                td 確認済み
+                            else if(user.is_authenticated=='temp_auth')
+                                td 臨時確認済み
+                            else
+                                td 未確認
+                    else
+                        li There are no user.

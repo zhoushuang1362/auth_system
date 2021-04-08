@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1= title
+  
+    ul
+        table(class="table table-striped table-hover")
+
+            caption Users in/out shelter
+
+            thead
+                
+                th shelter
+                th user
+                th time
+
+           
+            tbody
+
+                each user_shelter in all_user_shelter
+                    tr
+                        td #{user_shelter.shelter.shelter_name}
+                        td #{user_shelter.user.name}
+                        td #{user_shelter.date_formatted}
+                else
+                    li There are no user.

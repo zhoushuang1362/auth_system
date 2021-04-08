@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+  h3 User Name: #{user.name}
+  h3 User Birth: #{user.birth}
+  h3 User Age: #{user.age}
+  h3 User Sex: #{user.sex}
+  h3 User Address: #{user.address}
+  h3 User Telephone: #{user.telephone} 
+  h3 User Status: #{user.status.status_name}
+  h3 User Shelter: #{user.shelter.shelter_name}
+  h3 User Note :#{user.note}
+  h3 User Password :#{user.password}
+  h3 User Role: #{user.role.role_name}
+  h3 User is_authenticated:
+    if(user.is_authenticated=='real_name_auth')
+      p 確認済み
+    else if(user.is_authenticated=='temp_auth')
+      p 臨時確認済み
+    else
+      p 未確認
+  
+  hr
+  p
+    a(href=user.url+'/delete') Delete User
+  p
+    a(href=user.url+'/update') Update User
